@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="icon" href="logo_canteen.png">
+  <link rel="stylesheet" href="new_index.css">
+  <link rel="stylesheet" href="canteen_status.css">
+  <title>
+    View Status
+  </title>
+
+</head>
+<header>
+   
+</header>
+<body>
+    
+  <nav class="navbar navbar-dark bg-dark" style="position: fixed;top:0px;width: 100%;z-index: 1;overflow: visible;">
+    <div class="nav nav-tabs" id="nav-tab" role="tablist" style="z-index: 1;">
+      <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="index.html" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+      <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="canteen_Status.html" role="tab" aria-controls="nav-profile" aria-selected="false">View Canteen Status</a>
+      <a class="nav-item nav-link " id="nav-contact-tab" data-toggle="tab" href="Login_window.html" role="tab" aria-controls="nav-contact" aria-selected="false">Login</a>
+      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="sign_up_window.html" role="tab" aria-controls="nav-contact" aria-selected="false">SignUP</a>
+      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" role="tab" aria-controls="nav-contact" aria-selected="false" style="color: #007BFF;cursor: pointer;" href="contact.html">Contact Us</a>
+    </div>
+   
+    
+    <img src="theme.png" alt="" style="height: 30px;width: 30px;margin-left: 10cm;background-color: black;cursor: pointer;" onclick="document.getElementById('light_theme').style.display ='block';document.getElementsByTagName('BODY')[0].style.background ='none';document.getElementsByTagName('BODY')[0].style.backgroundColor='black';" title="Click here to switch to dark theme" id="dark_mode">
+      
+    <img src="light_theme.png" alt="" style="height: 30px;width: 50px;margin-left: 0cm;display: block;background-color: black;cursor: pointer;" onclick="document.getElementsByTagName('BODY')[0].style.backgroundColor='lightgrey';" id="light_mode" title="Click here to switch to light theme">
+    <h1 style="float: right;font-family:cursive;color: white;margin-right: 2mm;font-size: 50px;" id="Dine_desk_contact">Dine Desk</h1>
+       
+</nav>
+
+
+<div id="newdiv" style="width: 400px;margin-left: 12cm;margin-top: 4cm;">
+        <fieldset>
+            <legend style="margin-left: 2.5cm;">Canteen Name</legend>
+            <input type="text" style="width: 300px;margin-left: 0.70cm;" id="search">
+        </fieldset>
+
+        <button type="submit" id="search_it" style="margin-left: 4cm;margin-top: 0.2cm;">Search</button>
+</div>
+
+<div>
+    <ul id="my_list">
+        <li></li>
+    </ul>
+</div>
+
+    
+    <table class="table" style="width: 900px;margin-left: 5cm;" id="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Name of Canteen Owner</th>
+          <th scope="col">Canteen Name</th>
+          <th scope="col">Contact number</th>
+          <th scope="col">Status of Canteen</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="Owner"></td>
+          <td id="canteen_n"></td>
+          <td id="Contact"></td>
+          <td id="status"></td>
+
+      </tr>
+      
+      </tbody>
+    </table>
+    <!-- <nav>
+        <h1 style="margin-left: 60px; font-size: 40px;margin-top: 25px;font-family: cursive;" ></h1>
+        <ul>
+            <img src="log_mera.jpeg" alt="" height="147px" width="147px" style="float: left; border-radius: 50%; margin-top: -12px; margin-left: -1px;">
+           <a href="Login_window.html" class="nav_btn1"  title="Click here to redirect to login page" onmouseover="document.getElementById('drop_down').style.display = 'block';" > <li class="li1"><b> Login/Signup</b></li></a>
+           <a href="new_index.html" class="nav_btn3" title="get back to home page"><li class="li3"><b>Home</b></li></a>
+                
+        </ul>
+    </nav> -->
+
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+    import { getDatabase , ref, onValue, child, get} from "https://www.gstatic.com/firebasejs/9.18.0/firebase-database.js";
+
+const firebaseConfig = {
+      //****************** add your configaration here *******************//
+      apiKey: "AIzaSyBf_inD4Hqb2zqkmCuha69YEEgZ0EvSdDI",
+  authDomain: "canteen-live-status-65e71.firebaseapp.com",
+  databaseURL: "https://canteen-live-status-65e71-default-rtdb.firebaseio.com",
+  projectId: "canteen-live-status-65e71",
+  storageBucket: "canteen-live-status-65e71.appspot.com",
+  messagingSenderId: "427128725985",
+  appId: "1:427128725985:web:161d9f41d3e126af35b2a0",
+  measurementId: "G-YH01SPNTT2"
+    };
+
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+       const database = getDatabase();
+      const dbRef = ref(database);
+
+
+
+function searching(){
+    get(child(dbRef, `users/` + document.getElementById('search').value + `/canteen_owner`)).then((snapshot) => {
+  if (snapshot.exists()) {
+  document.getElementById('Owner').innerHTML = (snapshot.val());
+  } else {
+    console.log("No data available");
+  }
+}).catch((error) => {
+  console.error("error_owner_wala");
+});
+
+
+
+get(child(dbRef, `users/` + document.getElementById('search').value + `/canteen_name`)).then((snapshot) => {
+  if (snapshot.exists()) {
+  document.getElementById('canteen_n').innerHTML = (snapshot.val());
+  } else {
+    console.log("No data available");
+  }
+}).catch((error) => {
+  console.error("error_cateen_name_Wala");
+});
+
+
+get(child(dbRef, `users/` + document.getElementById('search').value + `/contact_number`)).then((snapshot) => {
+  if (snapshot.exists()) {
+  document.getElementById('Contact').innerHTML = (snapshot.val());
+  } else {
+    console.log("No data available");
+  }
+}).catch((error) => {
+  console.error("error_contact_number_Wala");
+});
+
+
+get(child(dbRef, `users/` + document.getElementById('search').value + `/status`)).then((snapshot) => {
+  if (snapshot.exists()) {
+  document.getElementById('status').innerHTML = (snapshot.val());
+  } else {
+    console.log("No data available");
+  }
+}).catch((error) => {
+  console.error("error_canteen_status");
+});
+
+
+}
+document.getElementById('search_it').addEventListener('click', searching);
+
+// function creatingTable(cant_NAME, own_name, stats, cont_numb){
+//     let trow = document.createElement('tr');
+//     let td1 = document.createElement('td');
+//     let td2 = document.createElement('td');
+//     let td3 = document.createElement('td');
+//     let td4 = document.createElement('td');
+
+//     td1.innerHTML = cant_NAME;
+//     td2.innerHTML = own_name;
+//     td3.innerHTML = stats;
+//     td4.innerHTML = cont_numb;
+
+//     trow.appendChild(td1);
+//     trow.appendChild(td2);
+//     trow.appendChild(td3);
+//     trow.appendChild(td4);
+
+//     function AddItemsToTable(CLASS){
+//         CLASS.forEach(element => {
+//            creatingTable(element.canteen_name, element.canteen_owner, element.status, element.contact_number); 
+//         });
+//     }
+
+
+
+  
+// }
+
+
+
+// function getDATA(){
+//     const dbRef = ref(database);
+//     get(child(dbRef, 'users'))
+//     .then((snapshot)=>{
+//         var user = [];
+
+//         snapshot.forEach(childSnapshot=>{
+//              user.push(childSnapshot.val());
+//         });
+//         AddItemsToTable(user);
+//     })
+// }
+
+
+// window.onload =getDATA;
+
+ 
+
+
+    </script>
+</body>       
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Canteen</title>
+    <link rel="icon" href="log_mera.jpeg">
+    <link rel="stylesheet" href="register_canten.css">
+</head>
+<body>
+    <nav>
+        <h1 style="margin-left: 60px; font-size: 40px;margin-top: 25px;font-family: cursive;" ></h1>
+        <ul>
+            <img src="log_mera.jpeg" alt="" height="147px" width="147px" style="float: left; border-radius: 50%; margin-top: -12px; margin-left: -1px;">
+           <a href="Login_window.html" id="nav_btn1"  title="Click here to redirect to login page" onmouseover="document.getElementById('drop_down').style.display = 'block';" > <li class="li1"><b> Login/Signup</b></li></a>
+           <a href="index.html" id="nav_btn3" title="get back to home page"><li class="li3"><b>Home</b></li></a>
+                
+        </ul>
+    </nav>
+
+    
+<div id="next_step" style="display: none;height: 90px;">
+   
+    <p style="margin-left: 0cm;font-size: 22px;text-align: center;margin-top: 5px;">To get updating feature you need to login after registration <a href="Login_window.html" id="here"> here  </a> and view Canteen Status <a href="canteen_Status.html" id="here">here.</a></p>
+</div>
+
+
+    <img src="maincanteen.jfif" id="img1" alt="" style="margin-top: 3cm;"> 
+    <img src="ism_canteen.jfif" alt="" id="img2" style="margin-top: 3cm;" > 
+
+<img src="can5.jfif" id="img3" alt="" style="width:300px; height: 250px;margin-top: 16cm;position: fixed;"> 
+<img src="cant.png" id="img4" alt="" style="float: right;width: 300px;position: fixed;bottom: 30px; right: 35px;">
+
+<div id="new_form" style="width:500px;align-items: center;margin-left: 395px;padding: 2%;background-color: rgb(31, 32, 31);margin-top: 6cm;">
+    <h3 style="text-align: center;margin-top: -0.1cm;font-size: 40px;color: white;">REGISTER YOU CANTEEN</h3> <br>
+    <fieldset style="width: 400px;margin:auto;height: 60px;background-color: rgb(31, 32, 31);">
+        <legend style="background-color: white; color:black; font-size: 15px; padding: 0.7%;">Name of the Canteen Owner</legend>
+        
+        <input type="text" name="cant_name" id="cant_owner" style="align-items: center;margin-left: -4px;width: 100%;height: 30px;" required>
+    </fieldset>
+    <fieldset style="width: 400px;margin:auto;height: 60px;margin-top: 1cm;background-color: rgb(31, 32, 31);">
+        <legend style="background-color: white; color:black; font-size: 15px; padding: 0.7%;">Name of the Canteen</legend>
+        
+        <input type="text" name="cant_name" id="cant_name" style="align-items: center;margin-left: -4px;width: 100%;height: 30px;" required>
+    </fieldset>
+    <fieldset style="width: 400px;margin:auto;height: 60px;margin-top: 1cm;background-color: rgb(31, 32, 31);">
+        <legend style="background-color: white; color:black; font-size: 15px; padding: 0.7%;">Contact number</legend>
+        
+        <input type="tel" name="cant_name" id="contact_num" style="align-items: center;margin-left: -4px;width: 100%;height: 30px;" maxlength="10" required>
+    </fieldset>
+    
+    <fieldset style="width: 200px;margin:auto;height: 60px;margin-top: 1cm;background-color: rgb(31, 32, 31);" >
+        <legend style="background-color: white; color:black; font-size: 15px; padding: 0.7%;margin-left: 1.25cm;padding: 3px;">Canteen Status</legend>
+        
+     <select name="Cant_stats"  id="status" style="width: 100px;margin-left: 1.25cm;margin-top: 0.05cm;height: 30px;">
+        <option value="open" style="text-align: center;" >Open</option>
+        <option value="closed" style="text-align: center;">Closed</option>
+
+     </select>
+    </fieldset>
+    <div style="margin-top: 30px;margin-bottom: 5px;">
+    <input type="checkbox" required style="margin-left: 3.30cm;margin-top: 0px;float: left;">
+    <p style="margin-left: 4cm;color: white;">I agree to the terms and conditions</p>
+    
+
+    <input type="submit" id="register" style="margin-left:5.35cm;" value="Register" title="Click to register your canteen" >
+    
+   
+    
+</div>
+
+
+<!-- <div id="myForm">
+    <h3 style="text-align: center;margin-top: -0.1cm;font-size: 40px;color: white;">REGISTER YOU CANTEEN</h3> <br>
+    <form style="width: 600px;margin-left: 30%;background-color: rgb(230, 169, 100);padding: 2%;" id="new_form">
+        <div class="form-group" >
+          <label for="cant_owner">Canteen Owner</label>
+          <input type="email" class="form-control" id="cant_owner"  placeholder="Enter name of canteen owner">
+        </div>
+        
+        <div class="form-group">
+            <label for="cant_name">Canteen Name</label>
+            <input type="email" class="form-control" id="cant_name" placeholder="Enter your canteen name">
+          </div>
+    
+          
+        <div class="form-group">
+            <label for="contact_num">Contact number</label>
+            <input type="tel" class="form-control" id="contact_num" placeholder="Enter 10 digit phone number" maxlength="10" required>
+            <small id="emailHelp" class="form-text text-muted">Contact number will be available to customers to contact you.</small>
+          </div>
+    
+          
+        <fieldset style="width: 300px;margin:auto;height: 60px;margin-top: 1cm;background-color: rgb(31, 32, 31);" >
+            <legend style="width: 150px;background-color: white; color:black; font-size: 15px; padding: 0.7%;padding: 3px;text-align: center;">Canteen Status</legend>
+            
+         <select name="Cant_stats"  id="status" style="width: 100px;margin-left: 34%;margin-top: 0.05cm;height: 30px;">
+            <option value="open" style="text-align: center;" >Open</option>
+            <option value="closed" style="text-align: center;">Closed</option>
+    
+         </select>
+        </fieldset>
+    
+        <div class="form-check" style="margin-top: 5%;">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" style="margin-left: 22%;">
+          <label class="form-check-label" for="exampleCheck1" style="margin-left: 27%;">I accept the terms and conditions.</label>
+        </div>
+        <button type="submit" class="btn btn-primary" id="register" style="height: 40px;margin-left: 40%;margin-top: 0.5%;">Submit</button>
+      </form>
+    </div> -->
+
+<div id="view_status" style="display: none;">
+    <h3 style="margin-left: 11%;font-size: 40px;">View Live Canteen Status</h3>
+    <a href="canteen_status.html"><button type="button" title="click to view status" style="background-color: lightgrey;margin-left: 40%;border-radius: 10%;background-color: rgb(65, 114, 156);margin-bottom: 3%;font-size: 30px;cursor: pointer;">View</button></a>
+</div>
+
+
+
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+import { getDatabase, ref, set, onValue, update, remove, child, get} from "https://www.gstatic.com/firebasejs/9.18.0/firebase-database.js";
+
+const firebaseConfig = {
+      //****************** add your configaration here *******************//
+        apiKey: "AIzaSyBf_inD4Hqb2zqkmCuha69YEEgZ0EvSdDI",
+        authDomain: "canteen-live-status-65e71.firebaseapp.com",
+        databaseURL: "https://canteen-live-status-65e71-default-rtdb.firebaseio.com",
+        projectId: "canteen-live-status-65e71",
+        storageBucket: "canteen-live-status-65e71.appspot.com",
+        messagingSenderId: "427128725985",
+        appId: "1:427128725985:web:161d9f41d3e126af35b2a0",
+        measurementId: "G-YH01SPNTT2"
+    };
+  
+      // Initialize Firebase
+       const app = initializeApp(firebaseConfig);
+       const database = getDatabase(app);
+  
+      register.addEventListener('click',(e) => {
+        var cant_owner =document.getElementById("cant_owner").value;
+var cant_name =document.getElementById("cant_name").value;
+var contact_num =document.getElementById("contact_num").value;
+var status =document.getElementById('status').value;
+  
+
+set(ref(database, 'users/' + cant_name), {
+       canteen_owner: cant_owner,
+       canteen_name: cant_name,
+       contact_number : contact_num,
+       status : status,
+       });
+  
+      alert('Canteen ' + cant_name + " has been registered !");
+      document.getElementById("new_form").style.display = 'none';
+      document.getElementById("img1").style.display = 'none';
+      document.getElementById("img2").style.display = 'none';
+      document.getElementById("img3").style.display = 'none';
+      document.getElementById("img4").style.display = 'none';
+      document.getElementById('next_step').style.display = 'block';
+      document.getElementById('view_status').style.display= 'block';
+          
+      });
+      const dbRef = ref(getDatabase());
+get(child(dbRef, `users/Shlok/canteen_owner`)).then((snapshot) => {
+  if (snapshot.exists()) {
+   document.getElementById('my_data').innerHTML = (snapshot.val());
+  } else {
+    console.log("No data available");
+  }
+}).catch((error) => {
+  console.error(error);
+});
+    
+
+  
+  
+  
+  </script>
+
+
+
+</body>
+</html>
